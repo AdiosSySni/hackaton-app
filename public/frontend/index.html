@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Therapy app</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <div class="app">
+            <header class="app__header">
+                <div class="app__auth" id="authBox"></div>
+            </header>
+
+            <main class="app__main">
+                <!-- Auth views -->
+                <section class="auth" id="view-auth">
+                    <div class="auth__forms">
+                        <form class="auth__form auth__form--login" id="loginForm">
+                            <h2 class="auth__title">Вход</h2>
+                            <div class="form__row">
+                                <label class="form__label">Email</label>
+                                <input class="form__input" name="email" type="email" required />
+                            </div>
+                            <div class="form__row">
+                                <label class="form__label">Пароль</label>
+                                <input class="form__input" name="password" type="password" required />
+                            </div>
+                            <div class="form__row form__actions">
+                                <button class="button button--primary" type="submit">Войти</button>
+                            </div>
+                            <div class="form__hint">
+                                Нет аккаунта? <a href="#" id="showRegister">Зарегистрироваться</a>
+                            </div>
+                            <div class="form__error" id="loginError"></div>
+                        </form>
+
+                        <form class="auth__form auth__form--register" id="registerForm" style="display: none">
+                            <h2 class="auth__title">Регистрация</h2>
+                            <div class="form__row">
+                                <label class="form__label">Имя</label>
+                                <input class="form__input" name="name" type="text" required />
+                            </div>
+                            <div class="form__row">
+                                <label class="form__label">Email</label>
+                                <input class="form__input" name="email" type="email" required />
+                            </div>
+                            <div class="form__row">
+                                <label class="form__label">Пароль</label>
+                                <input class="form__input" name="password" type="password" required />
+                            </div>
+                            <div class="form__row form__actions">
+                                <button class="button button--primary" type="submit">Зарегистрироваться</button>
+                            </div>
+                            <div class="form__hint">Уже есть аккаунт? <a href="#" id="showLogin">Войти</a></div>
+                            <div class="form__error" id="registerError"></div>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- App views -->
+                <section class="patients" id="view-patients" style="display: none">
+                    <div class="patients__header">
+                        <h2 class="patients__title">Пациенты</h2>
+                        <button class="button" id="btnNewPatient">+ Добавить пациента</button>
+                    </div>
+
+                    <div class="patients__list" id="patientsList"></div>
+
+                    <div class="patient-form" id="patientForm" style="display: none">
+                        <h3 class="patient-form__title">Новый пациент</h3>
+                        <div class="form__row">
+                            <label class="form__label">Имя</label>
+                            <input class="form__input" id="patientName" />
+                        </div>
+                        <div class="form__row">
+                            <label class="form__label">Возраст</label>
+                            <input class="form__input" id="patientAge" type="number" />
+                        </div>
+                        <div class="form__row">
+                            <label class="form__label">Пол</label>
+                            <div class="form__radio-group">
+                                <label class="form__radio-label">
+                                    <input type="radio" name="patientGender" value="мужчина" required />
+                                    Мужчина
+                                </label>
+                                <label class="form__radio-label">
+                                    <input type="radio" name="patientGender" value="женщина" required />
+                                    Женщина
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form__row">
+                            <button class="button button--primary" id="savePatient">Сохранить</button>
+                            <button class="button" id="cancelPatient">Отмена</button>
+                        </div>
+                        <div class="form__error" id="patientError"></div>
+                    </div>
+
+                    <div class="sessions" id="sessionsView" style="display: none">
+                        <button class="button" id="backToPatients">← Назад</button>
+                        <h3 class="sessions__title">Сессии пациента: <span id="sessionsPatientName"></span></h3>
+
+                        <div class="sessions__list" id="sessionsList"></div>
+
+                        <div class="session-form" id="sessionForm">
+                            <h4 class="session-form__title">Добавить сессию</h4>
+                            <div class="form__row">
+                                <label class="form__label">SUD (1-10)</label>
+                                <div class="form__slider-container">
+                                    <input
+                                        class="form__slider"
+                                        id="sessionSud"
+                                        type="range"
+                                        min="1"
+                                        max="10"
+                                        value="5" />
+                                    <span class="form__slider-value" id="sessionSudValue">5</span>
+                                </div>
+                            </div>
+                            <div class="form__row">
+                                <label class="form__label">Quality (1-10)</label>
+                                <div class="form__slider-container">
+                                    <input
+                                        class="form__slider"
+                                        id="sessionQuality"
+                                        type="range"
+                                        min="1"
+                                        max="10"
+                                        value="5" />
+                                    <span class="form__slider-value" id="sessionQualityValue">5</span>
+                                </div>
+                            </div>
+                            <div class="form__row">
+                                <label class="form__label">Комментарии</label>
+                                <input class="form__input" id="sessionComments" />
+                            </div>
+                            <div class="form__row">
+                                <button class="button button--primary" id="saveSession">Добавить</button>
+                            </div>
+                            <div class="form__error" id="sessionError"></div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <script src="app.js"></script>
+    </body>
+</html>
