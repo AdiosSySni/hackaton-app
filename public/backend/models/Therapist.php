@@ -1,7 +1,5 @@
 <?php
-// models/Therapist.php
-// Модель терапевта: регистрация и логин.
-// Register теперь проверяет, существует ли email, и использует хеш пароля.
+
 
 class Therapist {
     private $conn;
