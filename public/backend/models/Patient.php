@@ -1,6 +1,5 @@
 <?php
-// models/Patient.php
-// Модель пациента: CRUD операции, ограниченные терапевтом.
+
 
 class Patient {
     private $conn;
